@@ -1,30 +1,45 @@
-import React, { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
+import { QueryClient, useMutation, useQueryClient } from "react-query";
 
 const Post = () => {
-  const [value, setValue] = useState();
+  const [text, setText] = useState("");
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation(
+    "addTodos",
+    (param) => axios.post(`http://localhost:8000/todos`, param),
+    {
+      onMutate: (variables) => {
+        // console.log("onMutate: ", variables);
+      },
+      onError: (error, variables, context) => {
+        console.log("onError: ", context);
+      },
+      onSuccess: (data, variables, context) => {
+        // console.log("onSuccess: ", data);
+        // queryClient.setQueryData("todos", data);
+        queryClient.invalidateQueries("todos");
+      },
+      onSettled: (data, error, variables, context) => {
+        // console.log("onSettled: ", data);
+      },
+    }
+  );
 
   const submit = () => {
-    axios
-      .post("https://jsonplaceholder.typicode.com/value", {
-        userId: 1,
-        id: 111,
-        title: "delectus aut autem",
-        completed: false,
-      })
-      .then(function (response) {
-        // 성공 핸들링
-        console.log("delete 응답 : ", response);
-      })
-      .catch(function (error) {
-        // 에러 핸들링
-        console.log("delete 에러: ", error);
-      });
+    // mutate({ title: text, completed: false });
+    mutation.mutate({ title: text, completed: false });
+    setText('');
+  };
+
+  const onChange = (event) => {
+    setText(event.target.value);
   };
 
   return (
     <div>
-      <input type="text" />
+      <input type="text" value={text} onChange={onChange} />
       <button onClick={submit}>저장</button>
     </div>
   );
