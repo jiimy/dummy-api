@@ -1,5 +1,4 @@
 import axios from "axios";
-import LazyLoading from "components/lazyLoading/LazyLoading";
 import React, { useEffect } from "react";
 import Item from "./Item";
 
