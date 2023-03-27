@@ -1,13 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { HashRouter } from "react-router-dom";
+import App from "./App";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient({
+  onError: (error, query) => {
+    console.log("onError", error);
+  },
+  onSuccess: (data) => {
+    console.log("onSuccess", data);
+  },
+  // defaultOptions: {
+  //   queries: {
+  //     retry: 0,
+  //     suspense: true,
+  // refetchOnMount: false,
+  // refetchOnReconnect: false,
+  // refetchOnWindowFocus: false,
+  //   },
+  // },
+});
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <HashRouter basename={"/"}>
+      <QueryClientProvider client={queryClient}>
+        {/* devtools */}
+        <ReactQueryDevtools initialIsOpen={true} />
+        <App />
+      </QueryClientProvider>
+    </HashRouter>
   </React.StrictMode>
 );
 
