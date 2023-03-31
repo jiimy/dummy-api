@@ -1,4 +1,3 @@
-
 ## 화면에서 보기
 로컬 서버 & db를 사용중입니다. 
 
@@ -10,6 +9,8 @@ npm run start로 실행한 다음
 npm install -g json-server 후 
 json-server --watch db.json --port 8000 
 하여 로컬 디비를 참조해주세요. 
+
+![](https://velog.velcdn.com/images/rudwnok123/post/7f10ea03-d0a4-4771-ae1a-e8f9c6d3b555/image.gif)
 
 ## 코드만 보기
 todo list를 불러오는 화면 (read)
