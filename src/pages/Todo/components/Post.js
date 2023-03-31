@@ -10,6 +10,7 @@ const Post = () => {
     "addTodos",
     (param) => axios.post(`http://localhost:8000/todos`, param),
     {
+      // NOTE: 안쓰는 코드이긴하지만 예제를 위하여 남겨놓기
       onMutate: (variables) => {
         // console.log("onMutate: ", variables);
       },
@@ -28,7 +29,6 @@ const Post = () => {
   );
 
   const submit = () => {
-    // mutate({ title: text, completed: false });
     mutation.mutate({ title: text, completed: false });
     setText('');
   };

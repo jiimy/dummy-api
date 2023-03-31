@@ -32,16 +32,16 @@ const Header = () => {
             <Link to="/products">Products</Link>
           </li>
           <li className="disabled">
-            <Link to="/taro/three">Carts</Link>
+            <Link to="/three">Carts</Link>
           </li>
           <li className="disabled">
-            <Link to="/alternatively">Users</Link>
+            <Link to="/users">Users</Link>
           </li>
           <li className="disabled">
-            <Link to="/hexagram">Posts</Link>
+            <Link to="/posts">Posts</Link>
           </li>
           <li className="disabled">
-            <Link to="/celtic-cross">Comments</Link>
+            <Link to="/comments">Comments</Link>
           </li>
           <li>
             <Link to="/todos">Todos</Link>
