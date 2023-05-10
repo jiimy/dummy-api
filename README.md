@@ -22,6 +22,3 @@ todo item의 추가 화면 (create)
 
 todo item의 수정, 제거 화면 (update, delete) 
 /src/pages/Todo/components/Item.js
-
-### 후기
-auto refecting 기능이 상당히 좋다. 
