@@ -18,6 +18,9 @@ const List = () => {
     // { refetchInterval: intervalMs }
   );
 
+  console.log('flag');
+  console.log("data", data);
+
   useEffect(() => {
     switch (tab) {
       case 0:
