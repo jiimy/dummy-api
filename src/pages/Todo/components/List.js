@@ -14,11 +14,17 @@ const List = () => {
     async () => {
       const res = await axios.get(`http://localhost:8000/todos`);
       return res.data;
-    }
+    },
     // { refetchInterval: intervalMs }
+    {
+      // suspense: true,
+      // refetchOnMount: false,
+      // refetchOnReconnect: false,
+      // refetchOnWindowFocus: false,
+    }
   );
 
-  console.log('flag');
+  console.log("flag");
   console.log("data", data);
 
   useEffect(() => {
@@ -65,8 +71,7 @@ const List = () => {
           완료됨
         </div>
       </div>
-      {filteredData &&
-        filteredData.map((item, i) => <Item props={item} key={i} />)}
+      {filteredData && filteredData.map((item, i) => <Item props={item} key={i} />)}
     </div>
   );
 };

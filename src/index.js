@@ -14,19 +14,20 @@ const queryClient = new QueryClient({
   onSuccess: (data) => {
     console.log("전역이 업데이트됨?", data);
   },
-  defaultOptions: {
-    queries: {
-      retry: 0,
-      suspense: true,
-      refetchOnMount: false,
-      refetchOnReconnect: false,
-      refetchOnWindowFocus: false,
-    },
-  },
+  // defaultOptions: {
+  //   queries: {
+  //     retry: 0,
+  //     suspense: true,
+  //     refetchOnMount: false,
+  //     refetchOnReconnect: false,
+  //     refetchOnWindowFocus: false,
+  //   },
+  // },
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  <React.StrictMode>
     <HashRouter basename={"/"}>
       <QueryClientProvider client={queryClient}>
         {/* devtools */}
@@ -34,6 +35,7 @@ root.render(
         <App />
       </QueryClientProvider>
     </HashRouter>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
