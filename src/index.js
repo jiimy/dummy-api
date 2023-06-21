@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter } from "react-router-dom";
+import { unstable_HistoryRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import history from "./hooks/useHistory";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
@@ -28,13 +29,13 @@ const queryClient = new QueryClient({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <HashRouter basename={"/"}>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <Router history={history}>
         {/* devtools */}
         <ReactQueryDevtools initialIsOpen={true} />
         <App />
-      </QueryClientProvider>
-    </HashRouter>
+      </Router>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
