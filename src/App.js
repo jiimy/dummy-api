@@ -6,9 +6,39 @@ import MainPage from "pages/Main/MainPage";
 import TodoPage from "pages/Todo/TodoPage";
 import TestPage from "pages/TestPage/TestPage";
 
+import { messaging } from "./firebase-get-token";
+// import { getToken } from "firebase/messaging";
+import { useEffect } from "react";
+import getToken from "./utils/firebase";
+import Test from "components/Test/Test";
+
 function App() {
+  // async function requestPermission() {
+  //   const permission = await Notification.requestPermission();
+  //   if (permission === "granted") {
+  //     const token = await getToken(messaging, {
+  //       vapidKey: "BOWbgLD10kyQ6zwV8RpnBg84oLQCD6Ll1t2u0AWjDxd1-u3sbTNy1DbKHEvJpvgLrUAhinaytkHIDakxn0HETaI",
+  //     });
+  //     console.log("token : ", token);
+  //   } else if (permission === "denied") {
+  //     console.log("denied");
+  //   }
+  // }
+  // useEffect(() => {
+  //   requestPermission();
+  // }, []);
+
+  useEffect(() => {
+    async function getMessageToken() {
+      const token = await getToken();
+      console.log(token);
+    }
+    getMessageToken();
+  }, []);
+
   return (
     <div className="App">
+      <Test />
       <Header />
       <Routes>
         <Route path={"/"} element={<MainPage />} />
