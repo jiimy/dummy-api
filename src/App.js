@@ -9,8 +9,9 @@ import TestPage from "pages/TestPage/TestPage";
 import { messaging } from "./firebase-get-token";
 // import { getToken } from "firebase/messaging";
 import { useEffect } from "react";
-import getToken from "./utils/firebase";
+// import getToken from "./utils/firebase";
 import Test from "components/Test/Test";
+import useGetToken from "firebase-get-token";
 
 function App() {
   // async function requestPermission() {
@@ -27,14 +28,7 @@ function App() {
   // useEffect(() => {
   //   requestPermission();
   // }, []);
-
-  useEffect(() => {
-    async function getMessageToken() {
-      const token = await getToken();
-      console.log(token);
-    }
-    getMessageToken();
-  }, []);
+  useGetToken();
 
   return (
     <div className="App">
